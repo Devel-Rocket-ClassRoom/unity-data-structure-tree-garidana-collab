@@ -96,7 +96,7 @@ public class AVLTree<TKey, TValue> : BinarySerachTree<TKey, TValue> where TKey :
         if (node == null)
             return true;
 
-        int bf = BalanceFactor(node);    
+        int bf = BalanceFactor(node);
         if (Mathf.Abs(bf) > 1)
             return false;
 
