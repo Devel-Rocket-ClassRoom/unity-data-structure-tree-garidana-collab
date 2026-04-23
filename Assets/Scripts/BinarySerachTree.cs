@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
-// 이진 탐색 트리 (Binary Search Tree)
 public class BinarySerachTree<TKey, TValue> : IDictionary<TKey, TValue> where TKey : IComparable<TKey>
 {
     protected TreeNode<TKey, TValue> root;
