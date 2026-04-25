@@ -96,6 +96,7 @@ public class PriorityQueue<TElement, TPriority>
 
     public TElement Peek()
     {
+        // 힙의 
         if (_heap.Count == 0)
         {
             throw new System.Exception("Queue is empty.");
