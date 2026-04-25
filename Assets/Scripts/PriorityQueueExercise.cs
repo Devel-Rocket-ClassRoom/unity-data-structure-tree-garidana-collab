@@ -18,7 +18,7 @@ public class PriorityQueue<TElement, TPriority>
     // 리스트와 Comparer (Comparer<TPriority>.Default 캐싱 변수) 초기화 시켜줄 생성자
     public PriorityQueue()
     {
-        // 리스트 생성
+        // 원소와 우선순위 튜플을 갖는 리스트 생성
         _heap = new List<(TElement element, TPriority priority)>();
         // Comparer 캐싱
         _comparer = Comparer<TPriority>.Default;
@@ -30,7 +30,7 @@ public class PriorityQueue<TElement, TPriority>
         // 새 요소를 리스트 맨 끝에 먼저 추가
         _heap.Add((element, priority));
 
-        // 인덱스는 길이의 -1 // 방금 추가한 원소의 인덱스 : 0 => based라 Count - 1을 해줘야 해당하는 원소의 인덱스가 됨. 인덱스는 0에서부터 십작하기 때문
+        // 인덱스는 길이의 -1 // 방금 추가한 원소의 인덱스 : 0 => based라 Count - 1을 해줘야 해당하는 원소의 인덱스가 됨. 인덱스는 0에서부터 시작하기 때문
         int index = _heap.Count - 1;
 
         // 인덱스 0 = 루트 (더 올라갈 노드가 없음)
@@ -39,6 +39,7 @@ public class PriorityQueue<TElement, TPriority>
             // 현재 인덱스의 부모 인덱스 계산 식 (parentIndex)
             int parentIndex = (index - 1) / 2;
             // Comparer 사용해서 우선순위 (priority)를 비교
+            // Comparer => 왼쪽 인자가 클경우 음수, 두 인자가 같은 경우 0, 오른쪽 인자가 클 경우 양수 반환
             if (_comparer.Compare(_heap[index].priority, _heap[parentIndex].priority) < 0)
             {
                 (_heap[index], _heap[parentIndex]) = (_heap[parentIndex], _heap[index]);
